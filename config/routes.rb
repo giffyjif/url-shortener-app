@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_scope :user do
-   authenticated :user do
-     root 'links#index', as: :authenticated_root
-   end
+    authenticated :user do
+      root 'links#index', as: :authenticated_root
+    end
 
-   unauthenticated do
-     root 'devise/registrations#new', as: :unauthenticated_root
-   end
- end
+    unauthenticated do
+      root 'devise/registrations#new', as: :unauthenticated_root
+    end
+  end
+  get '/index' => 'links#index'
+  get '/links/new' => 'links#new'
+  post '/index' => 'links#create'
+  get 'index/:id' => 'links#show'
+  get 'index/:id/edit' => 'links#edit' 
+  patch 'index/:id' => 'links#update'
+  delete 'index/:id' => 'links#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

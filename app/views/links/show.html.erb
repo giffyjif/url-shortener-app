@@ -1,0 +1,6 @@
+<h1>Link Stats for <%= @link.slug%></h1>
+<h3>Visits: <%= @link.visit_count %></h3>
+<% if current_user && current_user.admin %>
+  <%= link_to "Edit", "/index/#{@link.id}/edit", class: "btn btn-success" %>
+  <%= link_to "Delete", "/index/#{@link.id}", {method: :delete, class: "btn btn-danger" }%>
+<% end %>
